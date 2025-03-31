@@ -1,17 +1,15 @@
 import "dotenv/config";
 import express from "express";
-import { PrismaClient } from "@prisma/client";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import morgan from "morgan";
 
 import { APP_ORIGIN, NODE_ENV, PORT } from "./constants/env";
-import authRoutes from "./routes/auth.route";
+import authRouter from "./routes/auth.route";
+import listingRouter from "./routes/listing.route";
 import errorHandler from "./middleware/errorHandler";
-import authenticate from "./middleware/authenticate";
 
-const prisma = new PrismaClient();
 const app = express();
 
 /* CONFIGURATION MIDDLEWARE */
@@ -30,7 +28,8 @@ app.use(
 app.use(cookieParser());
 
 /* API ROUTES */
-app.use("/auth", authRoutes);
+app.use("/auth", authRouter);
+app.use("/listings", listingRouter);
 
 /* UNHANDLED ROUTES */
 app.all("*", (_, res) => {

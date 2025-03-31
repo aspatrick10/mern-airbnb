@@ -1,8 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { promisify } from "util";
 
-import { LoginSchema, RegisterSchema } from "./auth.schemas";
+import { LoginSchema, RegisterSchema } from "../schemas/auth.schema";
 import prisma from "../config/prisma";
 import AppError from "../utils/appError";
 import catchAsync from "../utils/catchAsync";

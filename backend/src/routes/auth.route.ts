@@ -6,10 +6,10 @@ import {
   registerHandler,
 } from "../controllers/auth.controller";
 
-const authRoutes = Router();
+const router = Router();
 
-authRoutes.post("/register", registerHandler);
-authRoutes.post("/login", loginHandler);
-authRoutes.get("/logout", logoutHandler);
+router.post("/register", registerHandler);
+router.post("/login", loginHandler);
+router.get("/logout", logoutHandler);
 
-export default authRoutes;
+export default router;

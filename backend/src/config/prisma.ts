@@ -6,6 +6,17 @@ const prisma = new PrismaClient({
       hashedPassword: true,
     },
   },
+}).$extends({
+  result: {
+    listing: {
+      createdAt: {
+        needs: { createdAt: true },
+        compute(listing) {
+          return listing.createdAt.toISOString();
+        },
+      },
+    },
+  },
 });
 
 export default prisma;
