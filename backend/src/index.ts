@@ -8,6 +8,7 @@ import morgan from "morgan";
 import { APP_ORIGIN, NODE_ENV, PORT } from "./constants/env";
 import authRouter from "./routes/auth.route";
 import listingRouter from "./routes/listing.route";
+import reservationRouter from "./routes/reservation.route";
 import errorHandler from "./middleware/errorHandler";
 
 const app = express();
@@ -30,6 +31,7 @@ app.use(cookieParser());
 /* API ROUTES */
 app.use("/auth", authRouter);
 app.use("/listings", listingRouter);
+app.use("/reservations", reservationRouter);
 
 /* UNHANDLED ROUTES */
 app.all("*", (_, res) => {
